@@ -1,0 +1,12 @@
+
+{% extends 'base/base.html' %} 
+
+{% block content %} 
+    <div>
+        <h3>Medal: {{ color }}</h3>
+        <p>Name: {{ winner.Name }}</p>
+        <p>Country: {{ winner.Country }}</p>
+        <p>Time: {{ winner.Time }}</p>
+    </div>
+    <hr>
+{% endblock content %}

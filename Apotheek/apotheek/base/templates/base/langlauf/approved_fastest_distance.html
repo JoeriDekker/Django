@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+{% block content %}
+    {% for time in times %}
+        <h1><strong>Distance: </strong> {{ time.distance.length }}<br></h1>
+        <strong>Distance: </strong> {{ time.distance.length }}<br>
+        <strong>Time: </strong> {{ time.time_in_minutes }} minutes<br>
+        <strong>Date: </strong> {{ time.date }}<br>
+        <strong>User: </strong> {{ time.user.get_username }}<br>
+        <br>
+    {% empty %}
+    There are no times approved
+    {% endfor %}
+
+{% endblock content %}

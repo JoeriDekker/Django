@@ -1,0 +1,15 @@
+body{
+    background-color: aquamarine;
+}
+
+.messages{
+    background-color: blue;
+    padding: 1rem;
+    margin: 1rem;
+    width: 20rem;
+    text-align: center;
+    font-size: larger;
+    color: white;
+    border-radius: 1rem;
+    border: 1px black solid;
+}

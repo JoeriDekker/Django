@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    {% if km == "15KM" %}
+        <h1>Times for 15</h1>
+    {% endif %}
+
+    {% if km == "30KM" %}
+        <h1>Times for 30</h1>
+    {% endif %}
+    
+    {% for time in times %}
+        <hr>
+        <strong>length: </strong> {{ time.distance }}
+        <br>
+        <strong>time: </strong> {{ time.time_in_minutes }} minuten
+        <br>
+        <strong>users: </strong> {{ time.user }}
+        {% comment %} <strong>Time: </strong> {{ distance.full_name }} {% endcomment %}
+    {% endfor %}
+{% endblock content %}

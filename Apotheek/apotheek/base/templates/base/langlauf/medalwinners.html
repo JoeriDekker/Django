@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %} 
+
+{% block content %}
+    {% for medal, data in winners.items %}
+    <div>
+        <h3>Medal: {{ medal }}</h3>
+        <p>Name: {{ data.Name }}</p>
+        <p>Country: {{ data.Country }}</p>
+        <p>Time: {{ data.Time }}</p>
+    </div>
+    <a href="{% url 'medal' medal %}">{{medal}}</a>
+    <hr>
+    {% endfor %}
+{% endblock content %}
