@@ -2,33 +2,18 @@ body {
     margin: 0;
 }
 
-.nav-container {
-    background-color: aqua;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    padding-left: 1rem;
-
-}
-
-.nav-item {
-    background-color: aqua;
+/* .nav-item {
     margin: 0.5rem;
+} */
+
+.navbar_link{
+    color: black;
+    text-decoration: none;
+    padding: 1rem;
+    text-align: center;
 }
 
 img {
-    margin: 0.5rem 0;
-    height: 4rem;
-}
-
-a {
-    color: crimson;
-    font-style: italic;
-    text-decoration: none;
-    font-size: 2rem;
-}
-
-a:hover {
-    color: darkgreen;
-    text-decoration: underline;
+    margin: 0.5rem 3rem, 0.5rem, 0rem;
+    height: 3rem;
 }
