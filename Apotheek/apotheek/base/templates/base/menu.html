@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="nav-container">
-    <p><img src="{% static 'base/images/logo.png' %}" alt="Logo"></p>
+    <img src="{% static 'base/images/logo.png' %}" class="rounded float-start" alt="Logo">
     
     {% if user.is_authenticated %}
         <a href="{% url 'index' %}" class="nav-item">Home</a>
