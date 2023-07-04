@@ -18,12 +18,13 @@
     {% block csslinks %} {% endblock csslinks %}
   </head>
   <body>
-    {% include 'base/menu.html' %} {% if messages %}
-    <div class="messages">
-      {% for message in messages %} {{message}}<br />
-      {% endfor %}
-    </div>
+    {% include 'base/menu.html' %}
+    {% if messages %}
+      <div class="messages">
+        {% for message in messages %} {{message}}<br />
+        {% endfor %}
+      </div>
     {% endif %}
-    <div class="content">{% block content %} {% endblock content %}</div>
+    <div class="content rounded container">{% block content %} {% endblock content %}</div>
   </body>
 </html>
