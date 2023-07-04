@@ -1,0 +1,16 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+    <h2>User Collections</h2>
+    <ul>
+        {% for collection in collections %}
+            <li>
+                Medicine: {{ collection.medicine.name }}<br>
+                Date: {{ collection.date }} <br>
+                Collected: {{ collection.collected }} <br>
+            </li>
+        {% empty %}
+            <li>No collections found.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
