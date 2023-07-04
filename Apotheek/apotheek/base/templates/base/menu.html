@@ -2,5 +2,25 @@
 
 <div class="nav-container">
     <p><img src="{% static 'base/images/logo.png' %}" alt="Logo"></p>
-
+    
+    {% if user.is_authenticated %}
+        <a href="{% url 'index' %}" class="nav-item">Home</a>
+        <a href="{% url 'profile' %}" class="nav-item">Profile</a>
+        <a href="{% url 'personal_collections' %}" class="nav-item">Personal Collections</a>
+        {% if user.is_staff %}
+        <a href="{% url 'medicines' %}" class="nav-item">Medicines</a>
+        <a href="{% url 'collections' %}" class="nav-item">Collections</a>
+        <a href="{% url 'collected_items' %}" class="nav-item">Collected Items</a>
+        {% endif %}
+        <a href="{% url 'logout' %}">
+            <div class="nav-item">logout</div>
+        </a>
+    {% else %}
+        <a href="{% url 'login' %}">
+            <div class="nav-item">Login</div>
+        </a>
+        <a href="{% url 'register' %}">
+            <div class="nav-item">Register</div>
+        </a>
+    {% endif %}
 </div>
