@@ -2,13 +2,13 @@
 {% load static %}
 {% block content %}
     <h2>All Medicines</h2>
-    <a href="{% url 'add_medicine' %}">Voeg medicijn toe</a>
+    <a href="{% url 'add_medicine' %}" class="link">Voeg medicijn toe</a>
     <ul>
         {% for medicine in medicines %}
             <li>
                 {{ medicine.name }}
                 <div>
-                    <a href="{% url 'update_medicine' medicine.id %}">Update</a>
+                    <a href="{% url 'update_medicine' medicine.id %}" class="link">Update</a>
                     <form method="post" action="{% url 'delete_medicine' medicine.id %}">
                         {% csrf_token %}
                         <button type="submit">Delete</button>

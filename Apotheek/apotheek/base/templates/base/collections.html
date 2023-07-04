@@ -2,23 +2,42 @@
 {% load static %}
 {% block content %}
     <h2>All Collections</h2>
-    <a href="{% url 'add_collection' %}">Voeg afhaalactie toe</a>
-    <ul>
-        {% for collection in collections %}
-            <li>
-                Medicine: {{ collection.medicine.name }} <br>
-                User: {{ collection.user.username }} <br>
-                Date: {{ collection.date }} <br>
-                Collected: {{ collection.collected }} <br>
-                Collected Approved: {{ collection.collected_approved }} <br>
-                Collected Approved By: {{ collection.collected_approved_by.username }} <br>
+    <a href="{% url 'add_collection' %}" class="link">Voeg afhaalactie toe</a>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Medicine</th>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+            <th scope="col">Collected</th>
+            <th scope="col">Collected Approved</th>
+            <th scope="col">Collected Approved by</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for collection in collections %}
+        <tr>
+            <td>{{ collection.medicine.name }}</td>
+            <td>{{ collection.user.username }}</td>
+            <td>{{ collection.date }} </td>
+            <td>{{ collection.collected }} </td>
+            <td>{{ collection.collected_approved }}</td>
+            <td>{{ collection.collected_approved_by.username }}</td>
+            <td>
                 <form method="post" action="{% url 'delete_collection' collection.id %}">
                     {% csrf_token %}
                     <button type="submit">Delete</button>
                 </form>
-            </li>
+            </td>
+          </tr>
         {% empty %}
-            There are no collection actions
+            <tr>
+                <td> There are no collection actions</td>
+            </tr>
+           
         {% endfor %}
-    </ul>
+          
+        </tbody>
+      </table>
 {% endblock %}

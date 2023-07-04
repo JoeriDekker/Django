@@ -2,10 +2,6 @@ body {
     margin: 0;
 }
 
-/* .nav-item {
-    margin: 0.5rem;
-} */
-
 .navbar_link{
     color: black;
     text-decoration: none;
@@ -14,6 +10,18 @@ body {
 }
 
 img {
-    margin: 0.5rem 3rem, 0.5rem, 0rem;
+    margin-right: 2rem;
     height: 3rem;
+}
+
+.link{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: blue;
+    text-decoration: none;
+}
+
+.link:hover{
+    text-decoration: underline;
+    opacity: 75;
 }

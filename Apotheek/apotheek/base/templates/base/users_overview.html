@@ -5,7 +5,7 @@
     <ul>
         {% for user in non_admin_users %}
             <li>{{ user.username }}
-                <a href="{% url 'user_collections' user.id %}">View Collections</a>
+                <a href="{% url 'user_collections' user.id %}" class="link">View Collections</a>
             </li>
 
         {% endfor %}

@@ -1,11 +1,14 @@
 {% extends 'base/base.html' %} 
 {% load static %}
 {% block content %}
+<div class="profile p-3">
     <h2>Profile Page</h2>
     <p>Username: {{ profile.user.username }}</p>
     <p>City: {{ profile.city }}</p>
     <p>Bio: {{ profile.bio }}</p>
     <p>Date of Birth: {{ profile.date_of_birth }}</p>
-    <a href="{% url 'update_profile' %}">Update Profile</a>
-    <a href="{% url 'password_change' %}">Change Password</a>
+    <a href="{% url 'update_profile' %}" class="link">Update Profile</a><br>
+    <a href="{% url 'password_change' %}" class="link">Change Password</a>
+</div>
+    
 {% endblock %}
