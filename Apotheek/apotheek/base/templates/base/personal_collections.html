@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %} 
+{% load static %}
+{% block content %}
+    <h2>My Collections</h2>
+    <ul>
+        {% for collection in collections %}
+            <li>
+                Medicine: {{ collection.medicine.name }} <br>
+                Date: {{ collection.date }} <br>
+                Collected: {{ collection.collected }} <br> 
+
+                {% if not collection.collected %}
+                    <form method="post" action="{% url 'collect' collection.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Collect medicine</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% empty %}
+            There are no medicines available to collect
+        {% endfor %}
+    </ul>
+{% endblock %}

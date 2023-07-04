@@ -1,0 +1,24 @@
+{% extends 'base/base.html' %} 
+{% load static %}
+{% block content %}
+    <h2>All Collections</h2>
+    <a href="{% url 'add_collection' %}">Voeg afhaalactie toe</a>
+    <ul>
+        {% for collection in collections %}
+            <li>
+                Medicine: {{ collection.medicine.name }} <br>
+                User: {{ collection.user.username }} <br>
+                Date: {{ collection.date }} <br>
+                Collected: {{ collection.collected }} <br>
+                Collected Approved: {{ collection.collected_approved }} <br>
+                Collected Approved By: {{ collection.collected_approved_by.username }} <br>
+                <form method="post" action="{% url 'delete_collection' collection.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% empty %}
+            There are no collection actions
+        {% endfor %}
+    </ul>
+{% endblock %}
