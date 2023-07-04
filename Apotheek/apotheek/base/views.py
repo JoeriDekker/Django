@@ -90,7 +90,7 @@ def update_medicine(request, medicine_id):
         form = MedicineForm(request.POST, instance=medicine)
         if form.is_valid():
             form.save()
-            return redirect('medicine_list')
+            return redirect('medicines')
     else:
         form = MedicineForm(instance=medicine)
 
