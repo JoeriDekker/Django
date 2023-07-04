@@ -1,5 +1,5 @@
 body{
-    background-color: #545454;
+    background-color: #d3d3d3;
 }
 
 .messages{
@@ -14,10 +14,14 @@ body{
     border: 1px black solid;
 }
 
+.container_index{
+    text-align: center;
+}
+
 .container{
+    border: 1px black solid;
     background-color: whitesmoke;
     padding: 0.5rem;
-    text-align: center;
     margin-top: 0.5rem;
 }
 
