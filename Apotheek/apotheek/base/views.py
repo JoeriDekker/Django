@@ -112,7 +112,8 @@ def delete_medicine(request, medicine_id):
     medicine.delete()
     return redirect('medicines')
 
-
+@login_required
+@staff_member_required
 def collections(request):
     collections_list = Collection.objects.all()
     context = {
@@ -120,6 +121,8 @@ def collections(request):
     }
     return render(request, 'base/collections.html', context)
 
+@login_required
+@staff_member_required
 def add_collection(request):
     if request.method == 'POST':
         form = CollectionForm(request.POST)
@@ -135,11 +138,14 @@ def add_collection(request):
 
     return render(request, 'base/add_collection_item.html', context)
 
+@login_required
+@staff_member_required
 def delete_collection(request, collection_id):
     collection = Collection.objects.get(pk=collection_id)
     collection.delete()
     return redirect('collections')
 
+@login_required
 def personal_collections(request):
     collections = Collection.objects.filter(user=request.user, collected=False)
     context = {
@@ -147,12 +153,15 @@ def personal_collections(request):
     }
     return render(request, 'base/personal_collections.html', context)
 
+@login_required
 def collect(request, collection_id):
     collection = Collection.objects.get(pk=collection_id)    
     collection.collected = True
     collection.save()
     return redirect('personal_collections')
 
+@login_required
+@staff_member_required
 def collected_items(request):
     collected_items = Collection.objects.filter(collected=True)
     context = {
@@ -160,6 +169,8 @@ def collected_items(request):
     }
     return render(request, 'base/collected_items.html', context)
 
+@login_required
+@staff_member_required
 def approve_collected_item(request, item_id):
     item = Collection.objects.get(pk=item_id)
     item.collected_approved = True
@@ -167,6 +178,8 @@ def approve_collected_item(request, item_id):
     item.save()
     return redirect('collected_items')
 
+@login_required
+@staff_member_required
 def users_overview(request):
     non_admin_users = User.objects.filter(is_staff=False)
     context = {
@@ -174,6 +187,8 @@ def users_overview(request):
     }
     return render(request, 'base/users_overview.html', context)
 
+@login_required
+@staff_member_required
 def user_collections(request, user_id):
     user = User.objects.get(id=user_id)
     collections = Collection.objects.filter(user=user)
