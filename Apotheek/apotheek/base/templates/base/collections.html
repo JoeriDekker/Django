@@ -1,8 +1,9 @@
 {% extends 'base/base.html' %} 
 {% load static %}
 {% block content %}
+<div class="p-3">
     <h2>All Collections</h2>
-    <a href="{% url 'add_collection' %}" class="link">Voeg afhaalactie toe</a>
+    <a href="{% url 'add_collection' %}" class="link">Add Collection action</a>
 
     <table class="table">
         <thead>
@@ -39,5 +40,7 @@
         {% endfor %}
           
         </tbody>
-      </table>
+    </table>
+</div>
+    
 {% endblock %}

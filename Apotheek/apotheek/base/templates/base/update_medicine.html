@@ -1,10 +1,13 @@
 {% extends 'base/base.html' %} 
 {% load static %}
 {% block content %}
+<div class="p-3">
     <h2>Update Medicine</h2>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Update</button>
     </form>
+</div>
+    
 {% endblock %}

@@ -1,16 +1,37 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<div class="p-3">
     <h2>User Collections</h2>
-    <ul>
-        {% for collection in collections %}
-            <li>
-                Medicine: {{ collection.medicine.name }}<br>
-                Date: {{ collection.date }} <br>
-                Collected: {{ collection.collected }} <br>
-            </li>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Medicine</th>
+            <th scope="col">Date</th>
+            <th scope="col">Collected</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for collection in collections %}
+        <tr>
+            <td>{{ collection.medicine.name }}</td>
+            <td>{{ collection.date }} </td>
+            <td>{{ collection.collected }} </td>
+            <td>
+                <form method="post" action="{% url 'delete_collection' collection.id %}">
+                    {% csrf_token %}
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+          </tr>
         {% empty %}
-            <li>No collections found.</li>
+            <tr>
+                <td> There are no collection found</td>
+            </tr>
+           
         {% endfor %}
-    </ul>
+          
+        </tbody>
+    </table>
+</div>
 {% endblock %}

@@ -1,13 +1,30 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
+<div class="p-3">
     <h2>All Users</h2>
-    <ul>
-        {% for user in non_admin_users %}
-            <li>{{ user.username }}
-                <a href="{% url 'user_collections' user.id %}" class="link">View Collections</a>
-            </li>
 
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for user in non_admin_users %}
+        <tr>
+            <td>{{ user.username }}</td>
+            <td>
+                <a href="{% url 'user_collections' user.id %}" class="link">View Collections</a>
+            </td>
+          </tr>
+        
         {% endfor %}
-    </ul>
+          
+        </tbody>
+    </table>
+</div>
+
+
 {% endblock %}

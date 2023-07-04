@@ -1,23 +1,42 @@
 {% extends 'base/base.html' %} 
 {% load static %}
 {% block content %}
+<div class="p-3">
     <h2>My Collections</h2>
-    <ul>
-        {% for collection in collections %}
-            <li>
-                Medicine: {{ collection.medicine.name }} <br>
-                Date: {{ collection.date }} <br>
-                Collected: {{ collection.collected }} <br> 
-
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Medicine</th>
+            <th scope="col">Date</th>
+            <th scope="col">Collected</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for collection in collections %}
+        <tr>
+            <td>{{ collection.medicine.name }}</td>
+            <td>{{ collection.user.username }}</td>
+            <td>{{ collection.date }} </td>
+            <td> 
                 {% if not collection.collected %}
                     <form method="post" action="{% url 'collect' collection.id %}">
                         {% csrf_token %}
                         <button type="submit">Collect medicine</button>
                     </form>
                 {% endif %}
-            </li>
+            </td>
+          </tr>
         {% empty %}
-            There are no medicines available to collect
+            <tr>
+                <td> There are no collection actions</td>
+            </tr>
+           
         {% endfor %}
-    </ul>
+          
+        </tbody>
+    </table>
+</div>
+    
+    
 {% endblock %}

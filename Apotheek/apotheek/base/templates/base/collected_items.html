@@ -1,25 +1,49 @@
 {% extends 'base/base.html' %} 
 {% load static %}
 {% block content %}
-<h2>Collected Items</h2>
-<ul>
-    {% for item in collected_items %}
-        <li>
-            Medicine: {{ item.medicine.name }} <br>
-            User: {{ item.user.username }} <br>
-            Date: {{ item.date }} <br>
-            Collected: {{ item.collected }} <br>
-            Collected Approved: {{ item.collected_approved }} <br>
-            {% if not item.collected_approved %}
-                <form method="post" action="{% url 'approve_collected_item' item.id %}">
-                    {% csrf_token %}
-                    <button type="submit">Approve</button>
-                </form>
-            {% else %}
-            Collected Approved By: {{ item.collected_approved_by }} <br> 
-            {% endif %}
+<div class="p-3">
+    <h2>Collected Items</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Medicine</th>
+            <th scope="col">User</th>
+            <th scope="col">Date</th>
+            <th scope="col">Collected</th>
+            <th scope="col">Collected Approved</th>
+            <th scope="col">Collected Approved by</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for collection in collected_items %}
+        <tr>
+            <td>{{ collection.medicine.name }}</td>
+            <td>{{ collection.user.username }}</td>
+            <td>{{ collection.date }} </td>
+            <td>{{ collection.collected }} </td>
+            <td>{{ collection.collected_approved }}</td>
+            <td>
+                {% if not collection.collected_approved %}
+                    <form method="post" action="{% url 'approve_collected_item' collection.id %}">
+                        {% csrf_token %}
+                        <button type="submit">Approve</button>
+                    </form>
+                {% else %}
+                    {{ collection.collected_approved_by }} <br> 
+                {% endif %}
+            </td>
+            
+          </tr>
+        {% empty %}
+            <tr>
+                <td> There are no collected items</td>
+            </tr>
+           
+        {% endfor %}
+          
+        </tbody>
+    </table>
+</div>
 
-        </li>
-    {% endfor %}
-</ul>
+
 {% endblock %}
