@@ -1,5 +1,7 @@
 from django.urls import path, include
 from . import views
+from .views import CustomPasswordChangeView
+from django.contrib.auth.views import PasswordChangeDoneView
 
 urlpatterns = [
     path("", views.index, name="index"),
@@ -7,6 +9,8 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("profile/", views.profile, name="profile"),
     path('update_profile/', views.update_profile, name='update_profile'),
+    path('change_password/', CustomPasswordChangeView.as_view(template_name='registration/password_change.html'), name='password_change'),
+    path('password_changed', PasswordChangeDoneView.as_view(template_name='registration/password_change_done.html'), name='password_change_done'),
     path('medicines/', views.medicines, name='medicines'),
     path('add_medicine/', views.add_medicine, name='add_medicine'),
     path('update_medicine/<int:medicine_id>/', views.update_medicine, name='update_medicine'),
