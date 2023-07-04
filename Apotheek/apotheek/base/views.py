@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.urls import reverse_lazy
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.models import User
 
 class CustomPasswordChangeView(PasswordChangeView):
     success_url = reverse_lazy('profile')
@@ -166,12 +167,17 @@ def approve_collected_item(request, item_id):
     item.save()
     return redirect('collected_items')
 
-def nameform(requests):
-    form = NameForm()
-    context = {"form": form}
+def users_overview(request):
+    non_admin_users = User.objects.filter(is_staff=False)
+    context = {
+        'non_admin_users': non_admin_users
+    }
+    return render(request, 'base/users_overview.html', context)
 
-    if requests.method == "POST":
-        name = requests.POST.get("your_name")
-        context["greeting"] = f"Welcome {name}!"
-
-    return render(requests, "base/nameform.html", context)
+def user_collections(request, user_id):
+    user = User.objects.get(id=user_id)
+    collections = Collection.objects.filter(user=user)
+    context = {
+        'collections': collections
+    }
+    return render(request, 'base/user_collections.html', context)

@@ -22,4 +22,6 @@ urlpatterns = [
     path('collect/<int:collection_id>', views.collect, name='collect'),
     path('collected-items/', views.collected_items, name='collected_items'),
     path('approve_collected_item/<int:item_id>/', views.approve_collected_item, name='approve_collected_item'),
+    path('users_overview/', views.users_overview, name='users_overview'),
+    path('user_collections/<int:user_id>/', views.user_collections, name='user_collections'),
 ]
